@@ -29,6 +29,7 @@ postRouter.post('/posts', (req, res, next) => {
 		res.status(403).end();
 	}*/
 	const newPost = new Post(req.body);
+	console.log(newPost)
 	return newPost.save()
 	.then(() => res.json({post: newPost.toJSON() }))
 	.catch(next);
@@ -43,7 +44,7 @@ postRouter.delete('/posts/:id', (req, res, next) => {
 
 // Update a post by id
 postRouter.put('/posts/:id', (req, res, next) => {
-	return Post.finByIdAndUpdate(req.params.id, req.body.body)
+	return Post.findByIdAndUpdate(req.params.id, req.body.body)
 	.then(() => res.json({post: req.post.toJSON() }))
 	.catch(next);
 });
