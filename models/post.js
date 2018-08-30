@@ -7,10 +7,13 @@ const postSchema = new Schema({
 	text: { type: 'String', required: true },
 	author: { type: 'String', required: true },
 	id: { type:'String', required: true },
-	votes: {type: 'Number', required:true }}, { timestamps: true});
+	votes: {type: 'Number', required:true },
+	_id: { type: 'String' }}, { timestamps: true});
+
 
 postSchema.methods.toJSON = function() {
 	return {
+		_id: this._id,
 		id: this.id,
 		title: this.title,
 		text: this.text,
