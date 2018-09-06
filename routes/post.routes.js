@@ -18,7 +18,7 @@ postRouter.get('/posts/:id', (req, res, next) => {
 		if(err) {
 			return res.sendStatus(404);
 		} else if (post) {
-			return res.json({post: req.post.toJSON()})
+			return res.json({post: post.toJSON()})
 		}
 	});
 });
